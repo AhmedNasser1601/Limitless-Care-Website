@@ -18,5 +18,10 @@ namespace Limitless_Care_Website.Data
         [ForeignKey("Others_Id")]
         public int SpecialBenefitsId { get; set; }
         [ForeignKey("SpecialBenefits_Id")]
+
+        public InPatient inPatient { get; set; }
+        public InPatient outPatient { get; set; }
+        public InPatient others { get; set; }
+        public InPatient specialBenefits { get; set; }
     }
 }
