@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Limitless_Care_Website.Data
 {
-    internal class Requests
+    public class Requests
     {
         [Key]
         public int Id { get; set; }
