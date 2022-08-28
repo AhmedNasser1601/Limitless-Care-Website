@@ -13,6 +13,9 @@ namespace Limitless_Care_Website.Data
         public string ImagePath { get; set; }
         public string Brief { get; set; }
         public string Doumention { get; set; }
+        public string AcurrateFrequnent { get; set; }
+
+
 
 
 
