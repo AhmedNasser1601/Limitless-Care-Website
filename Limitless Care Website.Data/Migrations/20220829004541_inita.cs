@@ -47,29 +47,21 @@ namespace Limitless_Care_Website.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DigitalizationDetails",
+                name: "carts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Brief = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Doumention = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AcurrateFrequnent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerStatisfaction = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DigitalizationDetails", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "flexibility",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_flexibility", x => x.Id);
+                    table.PrimaryKey("PK_carts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -109,19 +101,6 @@ namespace Limitless_Care_Website.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_outPatients", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Providers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Providers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -260,108 +239,100 @@ namespace Limitless_Care_Website.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Benefits",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    cart_id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Benefits", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Benefits_carts_cart_id",
+                        column: x => x.cart_id,
+                        principalTable: "carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "digitalizations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Brief = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Details_ID = table.Column<int>(type: "int", nullable: false),
-                    DigitalizationDetailsId = table.Column<int>(type: "int", nullable: true)
+                    cart_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_digitalizations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_digitalizations_DigitalizationDetails_DigitalizationDetailsId",
-                        column: x => x.DigitalizationDetailsId,
-                        principalTable: "DigitalizationDetails",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Benefits",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    InPatient_Id = table.Column<int>(type: "int", nullable: false),
-                    OutPatient_Id = table.Column<int>(type: "int", nullable: false),
-                    Others_Id = table.Column<int>(type: "int", nullable: false),
-                    SpecialBenefits_Id = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Benefits", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Benefits_inPatients_InPatient_Id",
-                        column: x => x.InPatient_Id,
-                        principalTable: "inPatients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Benefits_Others_Others_Id",
-                        column: x => x.Others_Id,
-                        principalTable: "Others",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Benefits_outPatients_OutPatient_Id",
-                        column: x => x.OutPatient_Id,
-                        principalTable: "outPatients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Benefits_SpecialBenefits_SpecialBenefits_Id",
-                        column: x => x.SpecialBenefits_Id,
-                        principalTable: "SpecialBenefits",
+                        name: "FK_digitalizations_carts_cart_id",
+                        column: x => x.cart_id,
+                        principalTable: "carts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "carts",
+                name: "flexibility",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Brief = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Doumention = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AcurrateFrequnent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerStatisfaction = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Flexibility_ID = table.Column<int>(type: "int", nullable: false),
-                    Digitalization_ID = table.Column<int>(type: "int", nullable: false),
-                    Providers_ID = table.Column<int>(type: "int", nullable: false),
-                    Benefits_ID = table.Column<int>(type: "int", nullable: false)
+                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    cart_id = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_carts", x => x.Id);
+                    table.PrimaryKey("PK_flexibility", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_carts_Benefits_Benefits_ID",
-                        column: x => x.Benefits_ID,
-                        principalTable: "Benefits",
+                        name: "FK_flexibility_carts_cart_id",
+                        column: x => x.cart_id,
+                        principalTable: "carts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Providers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    cart_id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Providers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_carts_digitalizations_Digitalization_ID",
+                        name: "FK_Providers_carts_cart_id",
+                        column: x => x.cart_id,
+                        principalTable: "carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DigitalizationDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Digitalization_ID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DigitalizationDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DigitalizationDetails_digitalizations_Digitalization_ID",
                         column: x => x.Digitalization_ID,
                         principalTable: "digitalizations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_carts_flexibility_Flexibility_ID",
-                        column: x => x.Flexibility_ID,
-                        principalTable: "flexibility",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_carts_Providers_Providers_ID",
-                        column: x => x.Providers_ID,
-                        principalTable: "Providers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -406,49 +377,29 @@ namespace Limitless_Care_Website.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Benefits_InPatient_Id",
+                name: "IX_Benefits_cart_id",
                 table: "Benefits",
-                column: "InPatient_Id");
+                column: "cart_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Benefits_Others_Id",
-                table: "Benefits",
-                column: "Others_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Benefits_OutPatient_Id",
-                table: "Benefits",
-                column: "OutPatient_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Benefits_SpecialBenefits_Id",
-                table: "Benefits",
-                column: "SpecialBenefits_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_carts_Benefits_ID",
-                table: "carts",
-                column: "Benefits_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_carts_Digitalization_ID",
-                table: "carts",
+                name: "IX_DigitalizationDetails_Digitalization_ID",
+                table: "DigitalizationDetails",
                 column: "Digitalization_ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_carts_Flexibility_ID",
-                table: "carts",
-                column: "Flexibility_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_carts_Providers_ID",
-                table: "carts",
-                column: "Providers_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_digitalizations_DigitalizationDetailsId",
+                name: "IX_digitalizations_cart_id",
                 table: "digitalizations",
-                column: "DigitalizationDetailsId");
+                column: "cart_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_flexibility_cart_id",
+                table: "flexibility",
+                column: "cart_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Providers_cart_id",
+                table: "Providers",
+                column: "cart_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -469,28 +420,13 @@ namespace Limitless_Care_Website.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "carts");
-
-            migrationBuilder.DropTable(
-                name: "requests");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Benefits");
 
             migrationBuilder.DropTable(
-                name: "digitalizations");
+                name: "DigitalizationDetails");
 
             migrationBuilder.DropTable(
                 name: "flexibility");
-
-            migrationBuilder.DropTable(
-                name: "Providers");
 
             migrationBuilder.DropTable(
                 name: "inPatients");
@@ -502,10 +438,25 @@ namespace Limitless_Care_Website.Data.Migrations
                 name: "outPatients");
 
             migrationBuilder.DropTable(
+                name: "Providers");
+
+            migrationBuilder.DropTable(
+                name: "requests");
+
+            migrationBuilder.DropTable(
                 name: "SpecialBenefits");
 
             migrationBuilder.DropTable(
-                name: "DigitalizationDetails");
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "digitalizations");
+
+            migrationBuilder.DropTable(
+                name: "carts");
         }
     }
 }

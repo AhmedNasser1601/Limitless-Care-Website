@@ -10,7 +10,7 @@ using Unit.Data;
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220829003046_inita")]
+    [Migration("20220829004541_inita")]
     partial class inita
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,27 +28,12 @@ namespace Limitless_Care_Website.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("InPatient_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Others_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OutPatient_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SpecialBenefits_Id")
+                    b.Property<int>("cart_id")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InPatient_Id");
-
-                    b.HasIndex("Others_Id");
-
-                    b.HasIndex("OutPatient_Id");
-
-                    b.HasIndex("SpecialBenefits_Id");
+                    b.HasIndex("cart_id");
 
                     b.ToTable("Benefits");
                 });
@@ -63,23 +48,14 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("AcurrateFrequnent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Benefits_ID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Brief")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CustomerStatisfaction")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Digitalization_ID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Doumention")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Flexibility_ID")
-                        .HasColumnType("int");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -87,18 +63,7 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Providers_ID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("Benefits_ID");
-
-                    b.HasIndex("Digitalization_ID");
-
-                    b.HasIndex("Flexibility_ID");
-
-                    b.HasIndex("Providers_ID");
 
                     b.ToTable("carts");
                 });
@@ -113,15 +78,12 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("Brief")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Details_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DigitalizationDetailsId")
+                    b.Property<int>("cart_id")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DigitalizationDetailsId");
+                    b.HasIndex("cart_id");
 
                     b.ToTable("digitalizations");
                 });
@@ -136,7 +98,12 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Digitalization_ID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Digitalization_ID");
 
                     b.ToTable("DigitalizationDetails");
                 });
@@ -151,7 +118,12 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("cart_id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("cart_id");
 
                     b.ToTable("flexibility");
                 });
@@ -211,7 +183,12 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("cart_id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("cart_id");
 
                     b.ToTable("Providers");
                 });
@@ -453,81 +430,57 @@ namespace Limitless_Care_Website.Data.Migrations
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Benefits", b =>
                 {
-                    b.HasOne("Limitless_Care_Website.Data.InPatient", "inPatient")
+                    b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
                         .WithMany()
-                        .HasForeignKey("InPatient_Id")
+                        .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Limitless_Care_Website.Data.Others", "others")
-                        .WithMany()
-                        .HasForeignKey("Others_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Limitless_Care_Website.Data.OutPatient", "outPatient")
-                        .WithMany()
-                        .HasForeignKey("OutPatient_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Limitless_Care_Website.Data.SpecialBenefits", "specialBenefits")
-                        .WithMany()
-                        .HasForeignKey("SpecialBenefits_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("inPatient");
-
-                    b.Navigation("others");
-
-                    b.Navigation("outPatient");
-
-                    b.Navigation("specialBenefits");
+                    b.Navigation("Carts");
                 });
 
-            modelBuilder.Entity("Limitless_Care_Website.Data.Carts", b =>
+            modelBuilder.Entity("Limitless_Care_Website.Data.Digitalization", b =>
                 {
-                    b.HasOne("Limitless_Care_Website.Data.Benefits", "benefits")
+                    b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
                         .WithMany()
-                        .HasForeignKey("Benefits_ID")
+                        .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Limitless_Care_Website.Data.Digitalization", "digitalization")
+                    b.Navigation("Carts");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.DigitalizationDetails", b =>
+                {
+                    b.HasOne("Limitless_Care_Website.Data.Digitalization", "Digitalization")
                         .WithMany()
                         .HasForeignKey("Digitalization_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Limitless_Care_Website.Data.Flexibility", "flexibility")
-                        .WithMany()
-                        .HasForeignKey("Flexibility_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Limitless_Care_Website.Data.Providers", "providers")
-                        .WithMany()
-                        .HasForeignKey("Providers_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("benefits");
-
-                    b.Navigation("digitalization");
-
-                    b.Navigation("flexibility");
-
-                    b.Navigation("providers");
+                    b.Navigation("Digitalization");
                 });
 
-            modelBuilder.Entity("Limitless_Care_Website.Data.Digitalization", b =>
+            modelBuilder.Entity("Limitless_Care_Website.Data.Flexibility", b =>
                 {
-                    b.HasOne("Limitless_Care_Website.Data.DigitalizationDetails", "DigitalizationDetails")
+                    b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
                         .WithMany()
-                        .HasForeignKey("DigitalizationDetailsId");
+                        .HasForeignKey("cart_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("DigitalizationDetails");
+                    b.Navigation("Carts");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.Providers", b =>
+                {
+                    b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
+                        .WithMany()
+                        .HasForeignKey("cart_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Carts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
