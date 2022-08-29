@@ -10,18 +10,27 @@ namespace Limitless_Care_Website.Data
     {
         [Key]
         public int Id { get; set; }
-        public int InPatientId { get; set; }
+
+        public int InPatient_Id { get; set; }
         [ForeignKey("InPatient_Id")]
-        public int OutPatientId { get; set; }
-        [ForeignKey("OutPatient_Id")]
-        public int OthersId { get; set; }
-        [ForeignKey("Others_Id")]
-        public int SpecialBenefitsId { get; set; }
-        [ForeignKey("SpecialBenefits_Id")]
 
         public InPatient inPatient { get; set; }
-        public InPatient outPatient { get; set; }
-        public InPatient others { get; set; }
-        public InPatient specialBenefits { get; set; }
+
+        public int OutPatient_Id { get; set; }
+        [ForeignKey("OutPatient_Id")]
+
+        public OutPatient outPatient { get; set; }
+
+        public int Others_Id { get; set; }
+        [ForeignKey("Others_Id")]
+
+        public Others others { get; set; }
+
+        public int SpecialBenefits_Id { get; set; }
+        [ForeignKey("SpecialBenefits_Id")]
+
+        public SpecialBenefits specialBenefits { get; set; }
+
+
     }
 }

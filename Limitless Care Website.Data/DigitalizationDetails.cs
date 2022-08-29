@@ -10,5 +10,7 @@ namespace Limitless_Care_Website.Data
         [Key]
         public int Id { get; set; }
         public string Detail { get; set; }
+        //public Digitalization Digitalization { get; set; }
+
     }
 }

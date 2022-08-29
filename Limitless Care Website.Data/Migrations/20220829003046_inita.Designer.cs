@@ -10,8 +10,8 @@ using Unit.Data;
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220828231212_intial1")]
-    partial class intial1
+    [Migration("20220829003046_inita")]
+    partial class inita
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,38 @@ namespace Limitless_Care_Website.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.Benefits", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("InPatient_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Others_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OutPatient_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpecialBenefits_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InPatient_Id");
+
+                    b.HasIndex("Others_Id");
+
+                    b.HasIndex("OutPatient_Id");
+
+                    b.HasIndex("SpecialBenefits_Id");
+
+                    b.ToTable("Benefits");
+                });
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Carts", b =>
                 {
@@ -31,11 +63,23 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("AcurrateFrequnent")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Benefits_ID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Brief")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CustomerStatisfaction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Digitalization_ID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Doumention")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Flexibility_ID")
+                        .HasColumnType("int");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -43,7 +87,18 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Providers_ID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Benefits_ID");
+
+                    b.HasIndex("Digitalization_ID");
+
+                    b.HasIndex("Flexibility_ID");
+
+                    b.HasIndex("Providers_ID");
 
                     b.ToTable("carts");
                 });
@@ -61,9 +116,12 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.Property<int>("Details_ID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DigitalizationDetailsId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("Details_ID");
+                    b.HasIndex("DigitalizationDetailsId");
 
                     b.ToTable("digitalizations");
                 });
@@ -98,6 +156,51 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.ToTable("flexibility");
                 });
 
+            modelBuilder.Entity("Limitless_Care_Website.Data.InPatient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("inPatients");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.Others", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Others");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.OutPatient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("outPatients");
+                });
+
             modelBuilder.Entity("Limitless_Care_Website.Data.Providers", b =>
                 {
                     b.Property<int>("Id")
@@ -111,6 +214,45 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Providers");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.Requests", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("Phone")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("requests");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.SpecialBenefits", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SpecialBenefits");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -309,15 +451,83 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Limitless_Care_Website.Data.Digitalization", b =>
+            modelBuilder.Entity("Limitless_Care_Website.Data.Benefits", b =>
                 {
-                    b.HasOne("Limitless_Care_Website.Data.DigitalizationDetails", "details")
+                    b.HasOne("Limitless_Care_Website.Data.InPatient", "inPatient")
                         .WithMany()
-                        .HasForeignKey("Details_ID")
+                        .HasForeignKey("InPatient_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("details");
+                    b.HasOne("Limitless_Care_Website.Data.Others", "others")
+                        .WithMany()
+                        .HasForeignKey("Others_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Limitless_Care_Website.Data.OutPatient", "outPatient")
+                        .WithMany()
+                        .HasForeignKey("OutPatient_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Limitless_Care_Website.Data.SpecialBenefits", "specialBenefits")
+                        .WithMany()
+                        .HasForeignKey("SpecialBenefits_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("inPatient");
+
+                    b.Navigation("others");
+
+                    b.Navigation("outPatient");
+
+                    b.Navigation("specialBenefits");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.Carts", b =>
+                {
+                    b.HasOne("Limitless_Care_Website.Data.Benefits", "benefits")
+                        .WithMany()
+                        .HasForeignKey("Benefits_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Limitless_Care_Website.Data.Digitalization", "digitalization")
+                        .WithMany()
+                        .HasForeignKey("Digitalization_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Limitless_Care_Website.Data.Flexibility", "flexibility")
+                        .WithMany()
+                        .HasForeignKey("Flexibility_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Limitless_Care_Website.Data.Providers", "providers")
+                        .WithMany()
+                        .HasForeignKey("Providers_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("benefits");
+
+                    b.Navigation("digitalization");
+
+                    b.Navigation("flexibility");
+
+                    b.Navigation("providers");
+                });
+
+            modelBuilder.Entity("Limitless_Care_Website.Data.Digitalization", b =>
+                {
+                    b.HasOne("Limitless_Care_Website.Data.DigitalizationDetails", "DigitalizationDetails")
+                        .WithMany()
+                        .HasForeignKey("DigitalizationDetailsId");
+
+                    b.Navigation("DigitalizationDetails");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

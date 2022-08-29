@@ -16,19 +16,28 @@ namespace Limitless_Care_Website.Data
         public string Doumention { get; set; }
         public string AcurrateFrequnent { get; set; }
         public string CustomerStatisfaction { get; set; }
+
         public int Flexibility_ID { get; set; }
         [ForeignKey("Flexibility_ID")]
+
         public Flexibility flexibility { get; set; }
+
         public int Digitalization_ID { get; set; }
         [ForeignKey("Digitalization_ID")]
+
         public Digitalization digitalization { get; set; }
+
         public int Providers_ID { get; set; }
         [ForeignKey("Providers_ID")]
+
         public Providers providers { get; set; }
-        //public string Benefits_ID { get; set; }
-        //[ForeignKey("Benefits_ID ")]
-        ////public Benefits benefits { get; set; }
-        //momen
+
+        public int Benefits_ID { get; set; }
+        [ForeignKey("Benefits_ID")]
+
+
+        public Benefits benefits { get; set; }
+
 
 
 
