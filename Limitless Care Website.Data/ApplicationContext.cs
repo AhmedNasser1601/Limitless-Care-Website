@@ -20,12 +20,14 @@ namespace Unit.Data
         public DbSet<Providers> Providers { get; set; }
         public DbSet<Benefits> Benefits { get; set; }
         public DbSet<InPatient> inPatients { get; set; }
-
         public DbSet<OutPatient> outPatients { get; set; }
-
         public DbSet<Others> Others { get; set; }
         public DbSet<Requests> requests { get; set; }
         public DbSet<SpecialBenefits> SpecialBenefits { get; set; }
+        public DbSet<Updates>  Updates { get; set; }
+        public DbSet<Peoples> Peoples { get; set; }
+
+
 
 
 
