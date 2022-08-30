@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unit.Data;
 
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220830114646_inita4")]
+    partial class inita4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -477,7 +479,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.Digitalization", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("digitalizations")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -488,7 +490,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.DigitalizationDetails", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Digitalization", "Digitalization")
-                        .WithMany("DigitalizationDetails")
+                        .WithMany()
                         .HasForeignKey("Digitalization_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -499,7 +501,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.Flexibility", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("flexibilities")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -510,7 +512,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.InPatient", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("inPatients")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -521,7 +523,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.Others", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("Others")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -532,7 +534,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.OutPatient", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("outPatients")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -543,7 +545,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.Providers", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("Providers")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -554,7 +556,7 @@ namespace Limitless_Care_Website.Data.Migrations
             modelBuilder.Entity("Limitless_Care_Website.Data.SpecialBenefits", b =>
                 {
                     b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
-                        .WithMany("SpecialBenefits")
+                        .WithMany()
                         .HasForeignKey("cart_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -611,28 +613,6 @@ namespace Limitless_Care_Website.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Limitless_Care_Website.Data.Carts", b =>
-                {
-                    b.Navigation("digitalizations");
-
-                    b.Navigation("flexibilities");
-
-                    b.Navigation("inPatients");
-
-                    b.Navigation("Others");
-
-                    b.Navigation("outPatients");
-
-                    b.Navigation("Providers");
-
-                    b.Navigation("SpecialBenefits");
-                });
-
-            modelBuilder.Entity("Limitless_Care_Website.Data.Digitalization", b =>
-                {
-                    b.Navigation("DigitalizationDetails");
                 });
 #pragma warning restore 612, 618
         }

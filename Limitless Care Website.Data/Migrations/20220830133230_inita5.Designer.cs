@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unit.Data;
 
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220830133230_inita5")]
+    partial class inita5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,6 +78,9 @@ namespace Limitless_Care_Website.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CartsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
 
@@ -83,6 +88,8 @@ namespace Limitless_Care_Website.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartsId");
 
                     b.HasIndex("Digitalization_ID");
 
@@ -487,6 +494,10 @@ namespace Limitless_Care_Website.Data.Migrations
 
             modelBuilder.Entity("Limitless_Care_Website.Data.DigitalizationDetails", b =>
                 {
+                    b.HasOne("Limitless_Care_Website.Data.Carts", null)
+                        .WithMany("DigitalizationDetails")
+                        .HasForeignKey("CartsId");
+
                     b.HasOne("Limitless_Care_Website.Data.Digitalization", "Digitalization")
                         .WithMany("DigitalizationDetails")
                         .HasForeignKey("Digitalization_ID")
@@ -615,6 +626,8 @@ namespace Limitless_Care_Website.Data.Migrations
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Carts", b =>
                 {
+                    b.Navigation("DigitalizationDetails");
+
                     b.Navigation("digitalizations");
 
                     b.Navigation("flexibilities");

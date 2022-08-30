@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unit.Data;
 
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220830140714_inita7")]
+    partial class inita7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,6 +98,9 @@ namespace Limitless_Care_Website.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("CartsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Detail")
                         .HasColumnType("nvarchar(max)");
 
@@ -104,7 +109,7 @@ namespace Limitless_Care_Website.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("cart_id");
+                    b.HasIndex("CartsId");
 
                     b.ToTable("flexibility");
                 });
@@ -498,13 +503,9 @@ namespace Limitless_Care_Website.Data.Migrations
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Flexibility", b =>
                 {
-                    b.HasOne("Limitless_Care_Website.Data.Carts", "Carts")
+                    b.HasOne("Limitless_Care_Website.Data.Carts", null)
                         .WithMany("flexibilities")
-                        .HasForeignKey("cart_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Carts");
+                        .HasForeignKey("CartsId");
                 });
 
             modelBuilder.Entity("Limitless_Care_Website.Data.InPatient", b =>

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Limitless Care Website", "Limitless Care Website\Limitless Care Website.csproj", "{92B3F38A-A436-4A54-B54C-459A4622CE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LimitlessCareWebsite", "Limitless Care Website\LimitlessCareWebsite.csproj", "{92B3F38A-A436-4A54-B54C-459A4622CE87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Limitless Care Website.Data", "Limitless Care Website.Data\Limitless Care Website.Data.csproj", "{39384627-2039-4C83-B10C-D5CE48B40522}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LimitlessCareWebsite.Db", "Limitless Care Website.Data\LimitlessCareWebsite.Db.csproj", "{39384627-2039-4C83-B10C-D5CE48B40522}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Limitless Care Website.Logic", "Limitless Care Website.Logic\Limitless Care Website.Logic.csproj", "{E2CD39AC-42D4-4E56-A4CA-36DB3D84FED0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LimitlessCareWebsite.Logic", "Limitless Care Website.Logic\LimitlessCareWebsite.Logic.csproj", "{E2CD39AC-42D4-4E56-A4CA-36DB3D84FED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimitlessCareWebsite.Repository", "LimitlessCareWebsite.Repository\LimitlessCareWebsite.Repository.csproj", "{C62662D6-1262-4536-84D1-EBE0CC0821D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E2CD39AC-42D4-4E56-A4CA-36DB3D84FED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2CD39AC-42D4-4E56-A4CA-36DB3D84FED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2CD39AC-42D4-4E56-A4CA-36DB3D84FED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

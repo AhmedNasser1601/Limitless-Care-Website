@@ -11,6 +11,7 @@ namespace Limitless_Care_Website.Data
         [Key]
         public int Id { get; set; }
         public string Brief { get; set; }
+        public ICollection<DigitalizationDetails> DigitalizationDetails { get; set; }
         public int cart_id { get; set; }
         [ForeignKey("cart_id")]
         [Required]

@@ -11,10 +11,10 @@ namespace Limitless_Care_Website.Data
         [Key]
         public int Id { get; set; }
         public string Detail { get; set; }
-        public int Benefit_Id { get; set; }
-        [ForeignKey("Benefit_Id")]
+        public int cart_id { get; set; }
+        [ForeignKey("cart_id")]
         [Required]
-        public Benefits Benefits { get; set; }
+        public Carts Carts { get; set; }
 
     }
 }

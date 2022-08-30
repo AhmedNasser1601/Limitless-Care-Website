@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Limitless_Care_Website.Logic.DataAcess;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Unit.Data;
@@ -17,10 +18,10 @@ namespace Unit.Logic
             dbcontext.SaveChanges();
         }
 
-        //#region User
-        ////UserRepository User;
-        ////public UserRepository user => User ?? (User = new UserRepository(dbcontext));
-        ////#endregion
+        #region Cart
+        CartRepository  cart;
+        public CartRepository Cart => cart ?? (cart = new CartRepository(dbcontext));
+        #endregion
 
     }
 }
