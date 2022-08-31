@@ -1,3 +1,4 @@
+using Limitless.Services.Services.CartServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Unit.Data;
 
@@ -28,8 +30,18 @@ namespace Limitless_Care_Website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddControllers().AddJsonOptions(options =>
+            //{
+            //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+            //    options.JsonSerializerOptions.WriteIndented = true;
+            //});
+
+            services.AddControllers().AddNewtonsoftJson(x =>
+             x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddControllers();
+            services.AddScoped<ICartServices, CartServices>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,7 +2,7 @@
 
 namespace Limitless_Care_Website.Data.Migrations
 {
-    public partial class inita8 : Migration
+    public partial class inita2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,14 @@ namespace Limitless_Care_Website.Data.Migrations
             migrationBuilder.DropColumn(
                 name: "CartsId",
                 table: "flexibility");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Detail",
+                table: "flexibility",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
 
             migrationBuilder.CreateIndex(
                 name: "IX_flexibility_cart_id",
@@ -41,6 +49,16 @@ namespace Limitless_Care_Website.Data.Migrations
             migrationBuilder.DropIndex(
                 name: "IX_flexibility_cart_id",
                 table: "flexibility");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Detail",
+                table: "flexibility",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "CartsId",

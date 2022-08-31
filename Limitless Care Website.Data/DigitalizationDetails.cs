@@ -14,7 +14,6 @@ namespace Limitless_Care_Website.Data
         public int Digitalization_ID { get; set; }
         [ForeignKey("Digitalization_ID")]
         [Required]
-
         public Digitalization Digitalization { get; set; }
 
     }

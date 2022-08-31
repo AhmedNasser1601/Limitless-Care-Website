@@ -10,8 +10,8 @@ using Unit.Data;
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220830141019_inita8")]
-    partial class inita8
+    [Migration("20220831133019_inita2")]
+    partial class inita2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

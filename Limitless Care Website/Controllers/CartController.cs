@@ -1,4 +1,6 @@
-﻿using Limitless_Care_Website.Logic.Models;
+﻿using Limitless.Services.Services.CartServices;
+using Limitless_Care_Website.Data;
+using Limitless_Care_Website.Logic.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -7,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Unit.Data;
 using Unit.Logic;
+using Unit.Logic.Models;
 
 namespace Limitless_Care_Website.Controllers
 {
@@ -14,19 +17,18 @@ namespace Limitless_Care_Website.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-
-        UintOfWork uintOfWork;
-
-        public CartController(ApplicationContext context)
+        private readonly ICartServices CartServices;
+        public CartController (ICartServices CartServices)
         {
-            this.uintOfWork = new UintOfWork(context);
+            this.CartServices = CartServices;
         }
 
-        public IEnumerable<CartViewModel> Get(int id) // list all
+        [HttpGet]
+        public ResultViewModel GetCartDetails(int Id) // To Get The Details Of The specific Cart 
         {
-            var model =   uintOfWork.Cart.Get(id);
-            return model;
+          return CartServices.GetDetailsOfCart(Id);
+      
         }
-
+    
     }
 }

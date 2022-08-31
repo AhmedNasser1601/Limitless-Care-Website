@@ -6,17 +6,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Unit.Data;
+using Unit.Logic;
 
 namespace Limitless_Care_Website.Logic.DataAcess
 {
     public class CartRepository : Repository<Carts>
     {
+       private readonly UintOfWork uintOfWork;
         public CartRepository(ApplicationContext context) : base(context)
         {
+            this.uintOfWork = new UintOfWork(context);
+
         }
         public IEnumerable<CartViewModel> Get(int id)
         {
-            //select * from product
             return AsQueryable().Where(w => w.Id == id).Select(s => new CartViewModel
             {
                 Name = s.Name,
@@ -25,16 +28,15 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 Doumention = s.Doumention,
                 AcurrateFrequnent = s.AcurrateFrequnent,
                 CustomerStatisfaction = s.CustomerStatisfaction,
-                Flexibilities = s.flexibilities.ToList(),
-                providers = s.Providers.ToList(),
-                digitalizations = s.digitalizations.ToList(),
-                //DigitalizationDetails = n
-                inPatients = s.inPatients.ToList(),
-                outPatients = s.outPatients.ToList(),
+                Flexibilities = s.Flexibilities.ToList(),
+                Providers = s.Providers.ToList(),
+                Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList(),
+                InPatients = s.InPatients.ToList(),
+                OutPatients = s.OutPatients.ToList(),
                 Others = s.Others.ToList(),
                 SpecialBenefits = s.SpecialBenefits.ToList()
 
-            }) ;  //gets a list of my products as product view models
+            }); 
 
         }
     

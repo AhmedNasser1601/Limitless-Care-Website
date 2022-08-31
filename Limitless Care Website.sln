@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LimitlessCareWebsite.Db", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LimitlessCareWebsite.Logic", "Limitless Care Website.Logic\LimitlessCareWebsite.Logic.csproj", "{E2CD39AC-42D4-4E56-A4CA-36DB3D84FED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimitlessCareWebsite.Repository", "LimitlessCareWebsite.Repository\LimitlessCareWebsite.Repository.csproj", "{C62662D6-1262-4536-84D1-EBE0CC0821D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LimitlessCareWebsite.Repository", "LimitlessCareWebsite.Repository\LimitlessCareWebsite.Repository.csproj", "{C62662D6-1262-4536-84D1-EBE0CC0821D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Limitless.Services", "Limitless.Services\Limitless.Services.csproj", "{F4225A91-CC61-4DA2-8460-4A6A4DF8C826}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C62662D6-1262-4536-84D1-EBE0CC0821D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4225A91-CC61-4DA2-8460-4A6A4DF8C826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4225A91-CC61-4DA2-8460-4A6A4DF8C826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4225A91-CC61-4DA2-8460-4A6A4DF8C826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4225A91-CC61-4DA2-8460-4A6A4DF8C826}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

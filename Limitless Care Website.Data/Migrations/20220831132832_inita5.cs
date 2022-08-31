@@ -2,14 +2,10 @@
 
 namespace Limitless_Care_Website.Data.Migrations
 {
-    public partial class inita7 : Migration
+    public partial class inita5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_DigitalizationDetails_carts_CartsId",
-                table: "DigitalizationDetails");
-
             migrationBuilder.DropForeignKey(
                 name: "FK_flexibility_carts_cart_id",
                 table: "flexibility");
@@ -18,13 +14,15 @@ namespace Limitless_Care_Website.Data.Migrations
                 name: "IX_flexibility_cart_id",
                 table: "flexibility");
 
-            migrationBuilder.DropIndex(
-                name: "IX_DigitalizationDetails_CartsId",
-                table: "DigitalizationDetails");
-
-            migrationBuilder.DropColumn(
-                name: "CartsId",
-                table: "DigitalizationDetails");
+            migrationBuilder.AlterColumn<string>(
+                name: "Detail",
+                table: "flexibility",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "CartsId",
@@ -60,29 +58,18 @@ namespace Limitless_Care_Website.Data.Migrations
                 name: "CartsId",
                 table: "flexibility");
 
-            migrationBuilder.AddColumn<int>(
-                name: "CartsId",
-                table: "DigitalizationDetails",
-                type: "int",
-                nullable: true);
+            migrationBuilder.AlterColumn<string>(
+                name: "Detail",
+                table: "flexibility",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)");
 
             migrationBuilder.CreateIndex(
                 name: "IX_flexibility_cart_id",
                 table: "flexibility",
                 column: "cart_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DigitalizationDetails_CartsId",
-                table: "DigitalizationDetails",
-                column: "CartsId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_DigitalizationDetails_carts_CartsId",
-                table: "DigitalizationDetails",
-                column: "CartsId",
-                principalTable: "carts",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_flexibility_carts_cart_id",

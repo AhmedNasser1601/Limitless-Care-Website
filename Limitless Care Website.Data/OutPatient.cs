@@ -11,8 +11,8 @@ namespace Limitless_Care_Website.Data
         [Key]
         public int Id { get; set; }
         public string Detail { get; set; }
-        public int cart_id { get; set; }
-        [ForeignKey("cart_id")]
+        public int Cart_id { get; set; }
+        [ForeignKey("Cart_id")]
         [Required]
         public Carts Carts { get; set; }
     }
