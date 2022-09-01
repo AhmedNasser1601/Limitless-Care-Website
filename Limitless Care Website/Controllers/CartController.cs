@@ -24,9 +24,9 @@ namespace Limitless_Care_Website.Controllers
         }
 
         [HttpGet]
-        public ResultViewModel GetMainCart(int Id) 
+        public ResultViewModel GetMainCart() 
         {
-          return CartServices.GetMainCart(Id);
+          return CartServices.GetMainCart();
       
         }
         [HttpGet]

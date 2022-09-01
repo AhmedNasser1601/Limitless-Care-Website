@@ -8,7 +8,7 @@ namespace Limitless.Services.Services.CartServices
 {
     public interface ICartServices
     {
-        public ResultViewModel GetMainCart(int CartId);
+        public ResultViewModel GetMainCart();
         public ResultViewModel GetDetailsOfCart(int CartId); 
         public ResultViewModel GetBenefitsOfCart(int CartId);
 

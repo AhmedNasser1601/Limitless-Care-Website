@@ -18,9 +18,10 @@ namespace Limitless_Care_Website.Logic.DataAcess
             this.uintOfWork = new UintOfWork(context);
 
         }
-        public IEnumerable<MainOfCartViewModel> Main(int id)
+        public IEnumerable<MainOfCartViewModel> Main()
         {
-            return AsQueryable().Where(w => w.Id == id).Select(s => new MainOfCartViewModel
+            
+            var model=  AsQueryable().Select(s => new MainOfCartViewModel
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -29,6 +30,7 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 Doumention = s.Doumention
 
             });
+            return model;
 
         }
         public IEnumerable<DetailsOfCartViewModel> Details(int id)

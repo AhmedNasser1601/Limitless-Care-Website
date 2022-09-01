@@ -15,11 +15,11 @@ namespace Limitless.Services.Services.CartServices
         {
             this.uintOfWork = new UintOfWork(context);
         }
-        public ResultViewModel GetMainCart(int CartId)
+        public ResultViewModel GetMainCart()
         {
             try
             {
-                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Main(CartId) };
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Main() };
             }
             catch
             {
