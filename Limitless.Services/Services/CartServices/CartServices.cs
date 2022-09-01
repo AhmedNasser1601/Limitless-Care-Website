@@ -15,17 +15,41 @@ namespace Limitless.Services.Services.CartServices
         {
             this.uintOfWork = new UintOfWork(context);
         }
-
-        public ResultViewModel GetDetailsOfCart(int CartId)
+        public ResultViewModel GetMainCart(int CartId)
         {
             try
             {
-                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Get(CartId) };
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Main(CartId) };
             }
             catch
             {
                 throw new Exception();
             }
         }
+        public ResultViewModel GetDetailsOfCart(int CartId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Details(CartId) };
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+        public ResultViewModel GetBenefitsOfCart(int CartId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Benefits(CartId) };
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+
+    
+        
     }
 }

@@ -12,33 +12,49 @@ namespace Limitless_Care_Website.Logic.DataAcess
 {
     public class CartRepository : Repository<Carts>
     {
-       private readonly UintOfWork uintOfWork;
+        private readonly UintOfWork uintOfWork;
         public CartRepository(ApplicationContext context) : base(context)
         {
             this.uintOfWork = new UintOfWork(context);
 
         }
-        public IEnumerable<CartViewModel> Get(int id)
+        public IEnumerable<MainOfCartViewModel> Main(int id)
         {
-            return AsQueryable().Where(w => w.Id == id).Select(s => new CartViewModel
+            return AsQueryable().Where(w => w.Id == id).Select(s => new MainOfCartViewModel
             {
+                Id = s.Id,
                 Name = s.Name,
                 ImagePath = s.ImagePath,
                 Brief = s.Brief,
-                Doumention = s.Doumention,
+                Doumention = s.Doumention
+
+            });
+
+        }
+        public IEnumerable<DetailsOfCartViewModel> Details(int id)
+        {
+            return AsQueryable().Where(w => w.Id == id).Select(s => new DetailsOfCartViewModel
+            {
                 AcurrateFrequnent = s.AcurrateFrequnent,
                 CustomerStatisfaction = s.CustomerStatisfaction,
                 Flexibilities = s.Flexibilities.ToList(),
                 Providers = s.Providers.ToList(),
-                Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList(),
+                Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList()
+            });
+
+        }
+        public IEnumerable<BenefitsOfCartViewModel> Benefits(int id)
+        {
+            return AsQueryable().Where(w => w.Id == id).Select(s => new BenefitsOfCartViewModel
+            {
                 InPatients = s.InPatients.ToList(),
                 OutPatients = s.OutPatients.ToList(),
                 Others = s.Others.ToList(),
                 SpecialBenefits = s.SpecialBenefits.ToList()
 
-            }); 
+            });
 
         }
-    
     }
 }
+

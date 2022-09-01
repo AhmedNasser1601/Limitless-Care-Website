@@ -24,11 +24,23 @@ namespace Limitless_Care_Website.Controllers
         }
 
         [HttpGet]
-        public ResultViewModel GetCartDetails(int Id) // To Get The Details Of The specific Cart 
+        public ResultViewModel GetMainCart(int Id) 
         {
-          return CartServices.GetDetailsOfCart(Id);
+          return CartServices.GetMainCart(Id);
       
         }
-    
+        [HttpGet]
+        public ResultViewModel GetCartDetails(int Id) 
+        {
+            return CartServices.GetDetailsOfCart(Id);
+
+        }
+        [HttpGet]
+        public ResultViewModel GetCartBenefits(int Id)
+        {
+            return CartServices.GetBenefitsOfCart(Id);
+
+        }
+
     }
 }
