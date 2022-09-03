@@ -49,7 +49,10 @@ namespace Limitless.Services.Services.CartServices
             }
         }
 
-    
-        
+        public void AddRequest(RequestViewModel model)
+        {
+            uintOfWork.requests.Add(model);
+            uintOfWork.Commit();
+        }
     }
 }

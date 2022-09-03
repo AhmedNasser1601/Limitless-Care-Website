@@ -30,6 +30,10 @@ namespace Unit.Logic
         DigitalizationReposatory digitalizations;
         public DigitalizationReposatory Digitalizations => digitalizations ?? (digitalizations = new DigitalizationReposatory(dbcontext));
         #endregion
+        #region RequestReposatoriy
+        RequestReposatoriy request;
+        public RequestReposatoriy requests => request ?? (request = new RequestReposatoriy(dbcontext));
+        #endregion
 
 
 

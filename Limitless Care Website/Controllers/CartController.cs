@@ -43,6 +43,11 @@ namespace Limitless_Care_Website.Controllers
             return CartServices.GetBenefitsOfCart(Id);
 
         }
+        [HttpPost]
+        public void InsertRequest(RequestViewModel model)
+        {
+            CartServices.AddRequest(model);
+        }
 
     }
 }

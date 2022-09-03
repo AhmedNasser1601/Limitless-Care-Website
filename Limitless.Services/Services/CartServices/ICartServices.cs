@@ -11,6 +11,6 @@ namespace Limitless.Services.Services.CartServices
         public ResultViewModel GetMainCart();
         public ResultViewModel GetDetailsOfCart(int CartId); 
         public ResultViewModel GetBenefitsOfCart(int CartId);
-
+        public void AddRequest(RequestViewModel model);
     }
 }
