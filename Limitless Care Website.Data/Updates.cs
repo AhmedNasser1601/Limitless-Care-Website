@@ -12,6 +12,8 @@ namespace Limitless_Care_Website.Data
         public string ImagePath { get; set; }
         public string Brief { get; set; }
         public string Doumention { get; set; }
+        public string BriefInArabic { get; set; }
+        public string DoumentionInArabic { get; set; }
         public DateTime DateTime { get; set; }
     }
 }

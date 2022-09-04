@@ -16,7 +16,9 @@ namespace Limitless_Care_Website.Data
         [Required]
 
         public Carts Carts { get; set; }
+        public string DetailInArabic { get; set; }
         public string Detail { get; set; }
+
 
 
 

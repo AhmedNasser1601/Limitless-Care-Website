@@ -15,6 +15,7 @@ namespace Limitless.Services.Services.CartServices
         {
             this.uintOfWork = new UintOfWork(context);
         }
+        #region English
         public ResultViewModel GetMainCart()
         {
             try
@@ -34,7 +35,7 @@ namespace Limitless.Services.Services.CartServices
             }
             catch
             {
-                throw new Exception();
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id " + CartId };
             }
         }
         public ResultViewModel GetBenefitsOfCart(int CartId)
@@ -45,14 +46,52 @@ namespace Limitless.Services.Services.CartServices
             }
             catch
             {
-                throw new Exception();
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting Beneifts" };
             }
         }
+        #endregion
 
         public void AddRequest(RequestViewModel model)
         {
             uintOfWork.requests.Add(model);
             uintOfWork.Commit();
         }
+        #region Arabic
+        public ResultViewModel GetMainCart_Ar()
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Main_Ar() };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting All Carts" };
+            }
+        }
+
+        public ResultViewModel GetDetailsOfCart_Ar(int id)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Details_Ar(id) };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id "+id };
+            }
+        }
+
+        public ResultViewModel GetBenefitsOfCart_Ar(int CartId)
+        {
+            try
+            {
+                    return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Benefits_Ar(CartId) };
+            }         
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting Ar Beneifts" };
+            }
+        }
+        #endregion
     }
 }

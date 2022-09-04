@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Limitless_Care_Website.Data
+namespace Limitless_Care_Website.Logic.Models
 {
-    public class Peoples
+   public class MainOfCartViewModelArabic
     {
         public int Id { get; set; }
         public string ImagePath { get; set; }
-        public string Name { get; set; }
-        public string Role { get; set; }
         public string NameInArabic { get; set; }
-        public string RoleInArabic { get; set; }
+        public string BriefInArabic { get; set; }
+        public string DoumentionInArabic { get; set; }
     }
 }

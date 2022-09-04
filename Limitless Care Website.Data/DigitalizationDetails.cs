@@ -10,7 +10,10 @@ namespace Limitless_Care_Website.Data
     {
         [Key]
         public int Id { get; set; }
+        
         public string Detail { get; set; }
+        public string DetailInArabic { get; set; }
+
         public int Digitalization_ID { get; set; }
         [ForeignKey("Digitalization_ID")]
         [Required]

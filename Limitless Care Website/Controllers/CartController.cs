@@ -25,14 +25,15 @@ namespace Limitless_Care_Website.Controllers
             this.CartServices = CartServices;
         }
 
+        #region GetEnglishData
         [HttpGet]
-        public ResultViewModel GetMainCart() 
+        public ResultViewModel GetMainCart()
         {
-          return CartServices.GetMainCart();
-      
+            return CartServices.GetMainCart();
+
         }
         [HttpGet]
-        public ResultViewModel GetCartDetails(int Id) 
+        public ResultViewModel GetCartDetails(int Id)
         {
             return CartServices.GetDetailsOfCart(Id);
 
@@ -43,6 +44,28 @@ namespace Limitless_Care_Website.Controllers
             return CartServices.GetBenefitsOfCart(Id);
 
         }
+        #endregion
+        #region GetArabicData
+        [HttpGet]
+        public ResultViewModel GetMainCart_Ar()
+        {
+            return CartServices.GetMainCart_Ar();
+
+        }
+ 
+        [HttpGet]
+        public ResultViewModel GetCartDetails_Ar(int Id)
+        {
+            return CartServices.GetDetailsOfCart_Ar(Id);
+
+        }
+        public ResultViewModel GetCartBenefits_Ar(int Id)
+        {
+            return CartServices.GetBenefitsOfCart_Ar(Id);
+
+        }
+
+        #endregion
         [HttpPost]
         public void InsertRequest(RequestViewModel model)
         {

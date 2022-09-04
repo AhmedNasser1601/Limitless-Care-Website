@@ -7,10 +7,10 @@ namespace Limitless_Care_Website.Logic.Models
 {
     public class BenefitsOfCartViewModel
     {
-        public List<InPatient> InPatients { get; set; }
-        public List<OutPatient> OutPatients { get; set; }
-        public List<Others> Others { get; set; }
-        public List<SpecialBenefits> SpecialBenefits { get; set; }
+        public List<string> InPatients { get; set; }
+        public List<string> OutPatients { get; set; }
+        public List<string> Others { get; set; }
+        public List<string> SpecialBenefits { get; set; }
 
     }
 }

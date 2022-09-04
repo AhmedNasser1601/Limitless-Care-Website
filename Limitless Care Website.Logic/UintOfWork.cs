@@ -34,6 +34,11 @@ namespace Unit.Logic
         RequestReposatoriy request;
         public RequestReposatoriy requests => request ?? (request = new RequestReposatoriy(dbcontext));
         #endregion
+        #region UpdatesRepository
+        UpdateRepository updates;
+        public UpdateRepository updatess => updates ?? (updates = new UpdateRepository(dbcontext));
+        #endregion
+
 
 
 

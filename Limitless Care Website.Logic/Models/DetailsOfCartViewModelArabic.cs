@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Limitless_Care_Website.Logic.Models
 {
-    public class DetailsOfCartViewModel
+  public  class DetailsOfCartViewModelArabic
     {
-        public string AcurrateFrequnent { get; set; }
-        public string CustomerStatisfaction { get; set; }
+        public string AcurrateFrequnentInArabic { get; set; }
+        public string CustomerStatisfactionInArabic { get; set; }
         public List<string> Providers { get; set; }
         public List<string> Flexibilities { get; set; }
         public List<Digitalization> Digitalizations { get; set; }
-  
+
     }
 }

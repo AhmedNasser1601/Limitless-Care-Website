@@ -1,4 +1,5 @@
 using Limitless.Services.Services.CartServices;
+using Limitless.Services.Services.UpdatesServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,7 @@ namespace Limitless_Care_Website
 
             services.AddControllers();
             services.AddScoped<ICartServices, CartServices>();
+            services.AddScoped<IupdatesServices, UpdatesServices>();
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin()
                 ));
