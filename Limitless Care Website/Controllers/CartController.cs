@@ -16,7 +16,6 @@ namespace Limitless_Care_Website.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    //[EnableCors("AllowOrigin")]
     public class CartController : ControllerBase
     {
         private readonly ICartServices CartServices;
@@ -45,6 +44,7 @@ namespace Limitless_Care_Website.Controllers
 
         }
         #endregion
+
         #region GetArabicData
         [HttpGet]
         public ResultViewModel GetMainCart_Ar()
@@ -52,7 +52,6 @@ namespace Limitless_Care_Website.Controllers
             return CartServices.GetMainCart_Ar();
 
         }
- 
         [HttpGet]
         public ResultViewModel GetCartDetails_Ar(int Id)
         {
@@ -64,7 +63,6 @@ namespace Limitless_Care_Website.Controllers
             return CartServices.GetBenefitsOfCart_Ar(Id);
 
         }
-
         #endregion
         [HttpPost]
         public void InsertRequest(RequestViewModel model)

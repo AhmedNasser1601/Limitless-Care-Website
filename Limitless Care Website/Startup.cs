@@ -1,4 +1,5 @@
 using Limitless.Services.Services.CartServices;
+using Limitless.Services.Services.PeopleServices;
 using Limitless.Services.Services.UpdatesServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,8 +36,9 @@ namespace Limitless_Care_Website
              x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddControllers();
-            services.AddScoped<ICartServices, CartServices>();
+            services.AddScoped<ICartServices, CartServices>(); 
             services.AddScoped<IupdatesServices, UpdatesServices>();
+            services.AddScoped<IPeopleServices, PeopleServices>();
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin()
                 ));

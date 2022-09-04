@@ -29,6 +29,16 @@ namespace Limitless_Care_Website.Controllers
         {
             return updatesServices.GetDetailsOfUpdates(UpdateId);
         }
+        [HttpGet]
+        public ResultViewModel GetMainOfUpdates_Ar()
+        {
+            return updatesServices.GetMainUpdates_Ar();
+        }
+        [HttpGet]
+        public ResultViewModel GetDetailsOfUpdates_Ar(int UpdateId)
+        {
+            return updatesServices.GetDetailsOfUpdates_Ar(UpdateId);
+        }
 
     }
 }

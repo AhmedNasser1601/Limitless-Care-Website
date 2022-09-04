@@ -13,10 +13,11 @@ namespace Limitless_Care_Website.Logic.DataAcess
     {
         public UpdateRepository(ApplicationContext context) : base(context) { }
 
-        public IEnumerable<UpdatesViewModel> Main()
+        //Get Data Of Updates In English 
+        public IEnumerable<MainUpdatesViewModel> Main()
         {
 
-            var model = AsQueryable().Select(s => new UpdatesViewModel
+            var model = AsQueryable().Select(s => new MainUpdatesViewModel
             {
                 Id = s.Id,
                 ImagePath = s.ImagePath,
@@ -32,6 +33,29 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 ImagePath = s.ImagePath,
                 Brief = s.Brief,
                 Doumention = s.Doumention
+            });
+
+        }
+        //Get Data Of Updates In Arabic
+        public IEnumerable<MainUpdatesViewModel> Main_Ar()
+        {
+
+            var model = AsQueryable().Select(s => new MainUpdatesViewModel
+            {
+                Id = s.Id,
+                ImagePath = s.ImagePath,
+                Brief = s.BriefInArabic
+            });
+            return model;
+
+        }
+        public IEnumerable<UpdatesViewModel> Details_Ar(int id)
+        {
+            return AsQueryable().Where(w => w.Id == id).Select(s => new UpdatesViewModel
+            {
+                ImagePath = s.ImagePath,
+                Brief = s.BriefInArabic,
+                Doumention = s.DoumentionInArabic
             });
 
         }

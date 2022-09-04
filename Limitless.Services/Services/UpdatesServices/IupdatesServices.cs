@@ -9,5 +9,7 @@ namespace Limitless.Services.Services.UpdatesServices
     {
         public ResultViewModel GetMainUpdates();
         public ResultViewModel GetDetailsOfUpdates(int DetailId);
+        public ResultViewModel GetMainUpdates_Ar();
+        public ResultViewModel GetDetailsOfUpdates_Ar(int DetailId);
     }
 }

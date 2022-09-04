@@ -36,5 +36,29 @@ namespace Limitless.Services.Services.UpdatesServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In Geting the Detail Of Id  "+ DetailId };
             }
         }
+
+        public ResultViewModel GetMainUpdates_Ar()
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.updatess.Main_Ar() };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting All Details" };
+            }
+        }
+
+        public ResultViewModel GetDetailsOfUpdates_Ar(int DetailId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.updatess.Details_Ar(DetailId) };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In Geting the Detail Of Id  " + DetailId };
+            }
+        }
     }
 }

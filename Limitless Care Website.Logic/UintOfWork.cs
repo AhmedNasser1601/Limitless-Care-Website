@@ -22,7 +22,7 @@ namespace Unit.Logic
         CartRepository  cart;
         public CartRepository Cart => cart ?? (cart = new CartRepository(dbcontext));
         #endregion
-        #region DigitalizationReposatory
+        #region DigitalizationDetailsReposatory
         DigitalizationDetailsReposatory digitalization;
         public DigitalizationDetailsReposatory Digitalization => digitalization ?? (digitalization = new DigitalizationDetailsReposatory(dbcontext));
         #endregion
@@ -38,7 +38,10 @@ namespace Unit.Logic
         UpdateRepository updates;
         public UpdateRepository updatess => updates ?? (updates = new UpdateRepository(dbcontext));
         #endregion
-
+        #region PeopleRepository
+        PeopleRepository people;
+        public PeopleRepository peoples => people ?? (people = new PeopleRepository(dbcontext));
+        #endregion
 
 
 
