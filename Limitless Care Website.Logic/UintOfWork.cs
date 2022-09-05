@@ -1,12 +1,15 @@
-﻿using Limitless_Care_Website.Logic.DataAcess;
+﻿using Limitless_Care_Website.Logic;
+using Limitless_Care_Website.Logic.DataAcess;
+//using Limitless_Care_Website.Logic.DataAcess;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unit.Data;
+using Unit.Logic.Models;
 
 namespace Unit.Logic
 {
-    public class UintOfWork
+    public class UintOfWork : IUnitOfWork
     {
         private readonly ApplicationContext dbcontext;
         public UintOfWork(ApplicationContext context)
@@ -15,7 +18,8 @@ namespace Unit.Logic
         }
         public void Commit()
         {
-            dbcontext.SaveChanges();
+   
+                dbcontext.SaveChanges();
         }
 
         #region Cart
@@ -41,6 +45,8 @@ namespace Unit.Logic
         #region PeopleRepository
         PeopleRepository people;
         public PeopleRepository peoples => people ?? (people = new PeopleRepository(dbcontext));
+
+        //CartRepository IUnitOfWork.cart => throw new NotImplementedException();
         #endregion
 
 

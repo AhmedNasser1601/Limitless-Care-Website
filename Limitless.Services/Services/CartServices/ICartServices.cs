@@ -9,12 +9,14 @@ namespace Limitless.Services.Services.CartServices
     public interface ICartServices
     {
         public ResultViewModel GetMainCart();
-        public ResultViewModel GetDetailsOfCart(int CartId); 
+        public ResultViewModel GetDetailsOfCartSec1(int CartId);
+        public ResultViewModel GetDetailsOfCartSec2(int CartId);
         public ResultViewModel GetBenefitsOfCart(int CartId);
-        public void AddRequest(RequestViewModel model);
+        public ResultViewModel AddRequest(RequestViewModel model);
 
         public ResultViewModel GetMainCart_Ar();
-        public ResultViewModel GetDetailsOfCart_Ar(int id);
+        public ResultViewModel GetDetailsOfCartSec1_Ar(int CartId);
+        public ResultViewModel GetDetailsOfCartSec2_Ar(int CartId);
         public ResultViewModel GetBenefitsOfCart_Ar(int CartId);
 
     }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Unit.Data;
+using Unit.Logic.Models;
 
 namespace Limitless_Care_Website.Logic.DataAcess
 {
@@ -13,15 +14,17 @@ namespace Limitless_Care_Website.Logic.DataAcess
         public RequestReposatoriy(ApplicationContext context) : base(context) { }
         public void Add(RequestViewModel model)
         {
-            var data = new Requests
-            {
-                Id=0,
-                UserName = model.UserName,
-                Email = model.Email,
-                Phone = model.Phone,
-                CompanyName = model.CompanyName
-            };
-            Insert(data);
+                string phone = @"+" + model.Code + model.Phone;
+                var data = new Requests
+                {
+                    Id = 0,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    Code = model.Code,
+                    Phone = phone,
+                    CompanyName = model.CompanyName
+                };
+                Insert(data);        
 
         }
 

@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Limitless Care Website.Data\LimitlessCareWebsite.Db.csproj" />
-    <ProjectReference Include="..\LimitlessCareWebsite.Repository\LimitlessCareWebsite.Repository.csproj" />
   </ItemGroup>
 
 </Project>

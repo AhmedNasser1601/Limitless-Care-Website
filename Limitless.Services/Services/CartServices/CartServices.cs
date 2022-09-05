@@ -1,4 +1,5 @@
-﻿using Limitless_Care_Website.Logic.Models;
+﻿using Limitless_Care_Website.Logic;
+using Limitless_Care_Website.Logic.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Limitless.Services.Services.CartServices
 {
     public class CartServices : ICartServices
     {
-        private readonly UintOfWork uintOfWork;
+        private readonly IUnitOfWork uintOfWork;
         public CartServices(ApplicationContext context)
         {
             this.uintOfWork = new UintOfWork(context);
@@ -27,17 +28,29 @@ namespace Limitless.Services.Services.CartServices
                 throw new Exception();
             }
         }
-        public ResultViewModel GetDetailsOfCart(int CartId)
+        public ResultViewModel GetDetailsOfCartSec1(int CartId)
         {
             try
             {
-                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Details(CartId) };
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Details1(CartId) };
             }
             catch
             {
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id " + CartId };
             }
         }
+        public ResultViewModel GetDetailsOfCartSec2(int CartId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Details2(CartId) };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id " + CartId };
+            }
+        }
+
         public ResultViewModel GetBenefitsOfCart(int CartId)
         {
             try
@@ -51,10 +64,20 @@ namespace Limitless.Services.Services.CartServices
         }
         #endregion
 
-        public void AddRequest(RequestViewModel model)
+        public ResultViewModel AddRequest(RequestViewModel model)
         {
-            uintOfWork.requests.Add(model);
-            uintOfWork.Commit();
+            try
+            {
+                uintOfWork.requests.Add(model);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Added successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Add New Request " };
+
+            }
         }
         #region Arabic
         public ResultViewModel GetMainCart_Ar()
@@ -69,15 +92,26 @@ namespace Limitless.Services.Services.CartServices
             }
         }
 
-        public ResultViewModel GetDetailsOfCart_Ar(int id)
+        public ResultViewModel GetDetailsOfCartSec1_Ar(int CartId)
         {
             try
             {
-                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.Details_Ar(id) };
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.DetailsSection1_Ar(CartId) };
             }
             catch
             {
-                return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id "+id };
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id "+ CartId };
+            }
+        }
+        public ResultViewModel GetDetailsOfCartSec2_Ar(int CartId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.DetailsSection2_Ar(CartId) };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id " + CartId };
             }
         }
 
@@ -92,6 +126,9 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting Ar Beneifts" };
             }
         }
+
+      
+
         #endregion
     }
 }

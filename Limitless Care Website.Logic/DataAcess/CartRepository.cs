@@ -29,12 +29,25 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 ImagePath = s.ImagePath,
                 Brief = s.Brief,
                 Doumention = s.Doumention
-
             });
             return model;
 
         }
-        public IEnumerable<DetailsOfCartViewModel> Details(int id)
+        public IEnumerable<MainOfCartViewModel> Details1(int id)
+        {
+
+            var model = AsQueryable().Where(w => w.Id == id).Select(s => new MainOfCartViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                ImagePath = s.ImagePath,
+                Brief = s.Brief,
+                Doumention = s.Doumention
+            });
+            return model;
+
+        }
+        public IEnumerable<DetailsOfCartViewModel> Details2(int id)
         {
             return AsQueryable().Where(w => w.Id == id).Select(s => new DetailsOfCartViewModel
             {
@@ -44,7 +57,6 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 Providers = s.Providers.Select(h => h.Detail).ToList(),
                 Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList()
             }); 
-
         }
         public IEnumerable<BenefitsOfCartViewModel> Benefits(int id)
         {
@@ -59,31 +71,48 @@ namespace Limitless_Care_Website.Logic.DataAcess
 
         }
         // Get Data In Arabic 
-        public IEnumerable<MainOfCartViewModelArabic> Main_Ar()
+        public IEnumerable<MainOfCartViewModel> Main_Ar()
         {
 
-            var model = AsQueryable().Select(s => new MainOfCartViewModelArabic
+            var model = AsQueryable().Select(s => new MainOfCartViewModel
             {
                 Id = s.Id,
-                NameInArabic = s.NameInArabic,
+                Name = s.NameInArabic,
                 ImagePath = s.ImagePath,
-                BriefInArabic = s.BriefInArabic,
-                DoumentionInArabic = s.DoumentionInArabic
+                Brief= s.BriefInArabic,
+                Doumention = s.DoumentionInArabic
+
 
             });
             return model;
 
         }
-        public IEnumerable<DetailsOfCartViewModelArabic> Details_Ar(int id)
+        public IEnumerable<MainOfCartViewModel> DetailsSection1_Ar(int id)
         {
-            return AsQueryable().Where(w => w.Id == id).Select(s => new DetailsOfCartViewModelArabic
+
+            var model = AsQueryable().Where(w => w.Id == id).Select(s => new MainOfCartViewModel
             {
-                AcurrateFrequnentInArabic = s.AcurrateFrequnentInArabic ,
-                CustomerStatisfactionInArabic = s.CustomerStatisfactionInArabic,
+                Id = s.Id,
+                Name = s.NameInArabic,
+                ImagePath = s.ImagePath,
+                Brief = s.BriefInArabic,
+                Doumention=s.DoumentionInArabic
+
+
+            });
+            return model;
+
+        }
+        public IEnumerable<DetailsOfCartViewModel> DetailsSection2_Ar(int id)
+        {
+            return AsQueryable().Where(w => w.Id == id).Select(s => new DetailsOfCartViewModel
+            {
+                AcurrateFrequnent = s.AcurrateFrequnentInArabic,
+                CustomerStatisfaction = s.CustomerStatisfactionInArabic,
                 Flexibilities = s.Flexibilities.Select(h => h.DetailInArabic).ToList(),
                 Providers = s.Providers.Select(h => h.DetailInArabic).ToList(),
                 Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList()
-            });
+            }) ;
 
         }
         public IEnumerable<BenefitsOfCartViewModel> Benefits_Ar(int id)

@@ -24,7 +24,7 @@ namespace Limitless_Care_Website.Controllers
             this.CartServices = CartServices;
         }
 
-        #region GetEnglishData
+        // Get Data In English
         [HttpGet]
         public ResultViewModel GetMainCart()
         {
@@ -32,9 +32,15 @@ namespace Limitless_Care_Website.Controllers
 
         }
         [HttpGet]
-        public ResultViewModel GetCartDetails(int Id)
+        public ResultViewModel GetCartDetailsSection1(int Id)
         {
-            return CartServices.GetDetailsOfCart(Id);
+            return CartServices.GetDetailsOfCartSec1(Id);
+
+        }
+        [HttpGet]
+        public ResultViewModel GetCartDetailsSection2(int Id)
+        {
+            return CartServices.GetDetailsOfCartSec2(Id);
 
         }
         [HttpGet]
@@ -43,9 +49,7 @@ namespace Limitless_Care_Website.Controllers
             return CartServices.GetBenefitsOfCart(Id);
 
         }
-        #endregion
-
-        #region GetArabicData
+        // Get Data In Arabic
         [HttpGet]
         public ResultViewModel GetMainCart_Ar()
         {
@@ -53,9 +57,15 @@ namespace Limitless_Care_Website.Controllers
 
         }
         [HttpGet]
-        public ResultViewModel GetCartDetails_Ar(int Id)
+        public ResultViewModel GetCartDetailsSection1_Ar(int Id)
         {
-            return CartServices.GetDetailsOfCart_Ar(Id);
+            return CartServices.GetDetailsOfCartSec1_Ar(Id);
+
+        }
+        [HttpGet]
+        public ResultViewModel GetCartDetailsSection2_Ar(int Id)
+        {
+            return CartServices.GetDetailsOfCartSec2_Ar(Id);
 
         }
         public ResultViewModel GetCartBenefits_Ar(int Id)
@@ -63,11 +73,12 @@ namespace Limitless_Care_Website.Controllers
             return CartServices.GetBenefitsOfCart_Ar(Id);
 
         }
-        #endregion
+
+        //Request 
         [HttpPost]
-        public void InsertRequest(RequestViewModel model)
+        public ResultViewModel InsertRequest(RequestViewModel model)
         {
-            CartServices.AddRequest(model);
+          return  CartServices.AddRequest(model);
         }
 
     }
