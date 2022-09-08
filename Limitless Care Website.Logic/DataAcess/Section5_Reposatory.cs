@@ -10,10 +10,10 @@ using Unit.Logic;
 
 namespace Limitless_Care_Website.Logic.DataAcess
 {
-    public class DigitalizationReposatory : Repository<Digitalization>
+    public class Section5_Reposatory : Repository<Section5>
     {
-        public DigitalizationReposatory(ApplicationContext context) : base(context) { }
-        public IEnumerable< Digitalization> GetDetails(int CartId)
+        public Section5_Reposatory(ApplicationContext context) : base(context) { }
+        public IEnumerable< Section5> GetDetails(int CartId)
         {
             var model =  AsQueryable().Where(w => w.Id == CartId).ToList();
             return model;

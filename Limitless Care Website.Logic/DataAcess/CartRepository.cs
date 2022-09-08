@@ -33,6 +33,21 @@ namespace Limitless_Care_Website.Logic.DataAcess
             return model;
 
         }
+        public IEnumerable<SectionsNameViewModel> SectionsName(int id)
+        {
+
+            var model = AsQueryable().Where(w => w.Id == id).Select(s => new SectionsNameViewModel
+            {
+              NameofSection1 = s.NameofSection1,
+              NameofSection2 = s.NameofSection2,
+              NameofSection3 = s.NameofSection3,
+              NameofSection4 = s.NameofSection4,
+              NameofSection5 = s.NameofSection5
+            });
+            return model;
+
+        }
+
         public IEnumerable<MainOfCartViewModel> Details1(int id)
         {
 
@@ -51,11 +66,11 @@ namespace Limitless_Care_Website.Logic.DataAcess
         {
             return AsQueryable().Where(w => w.Id == id).Select(s => new DetailsOfCartViewModel
             {
-                AcurrateFrequnent = s.AcurrateFrequnent,
-                CustomerStatisfaction = s.CustomerStatisfaction,
-                Flexibilities = s.Flexibilities.Select(h=>h.Detail).ToList(),
-                Providers = s.Providers.Select(h => h.Detail).ToList(),
-                Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList()
+                section1 = s.Section1.Select(h => h.Detail).ToList(),
+                section2 = s.Section2.Select(h => h.Detail).ToList(),
+                section3 = s.Section3.Select(h => h.Detail).ToList(),
+                section4 = s.Section4.Select(h => h.Detail).ToList(),
+                section5 = uintOfWork.Digitalization.GetDetails(id).ToList()
             }); 
         }
         public IEnumerable<BenefitsOfCartViewModel> Benefits(int id)
@@ -87,6 +102,20 @@ namespace Limitless_Care_Website.Logic.DataAcess
             return model;
 
         }
+        public IEnumerable<SectionsNameViewModel> SectionsName_Ar(int id)
+        {
+
+            var model = AsQueryable().Where(w => w.Id == id).Select(s => new SectionsNameViewModel
+            {
+                NameofSection1 = s.NameofSection1_Ar,
+                NameofSection2 = s.NameofSection2_Ar,
+                NameofSection3 = s.NameofSection3_Ar,
+                NameofSection4 = s.NameofSection4_Ar,
+                NameofSection5 = s.NameofSection5_Ar
+            });
+            return model;
+
+        }
         public IEnumerable<MainOfCartViewModel> DetailsSection1_Ar(int id)
         {
 
@@ -107,12 +136,12 @@ namespace Limitless_Care_Website.Logic.DataAcess
         {
             return AsQueryable().Where(w => w.Id == id).Select(s => new DetailsOfCartViewModel
             {
-                AcurrateFrequnent = s.AcurrateFrequnentInArabic,
-                CustomerStatisfaction = s.CustomerStatisfactionInArabic,
-                Flexibilities = s.Flexibilities.Select(h => h.DetailInArabic).ToList(),
-                Providers = s.Providers.Select(h => h.DetailInArabic).ToList(),
-                Digitalizations = uintOfWork.Digitalization.GetDigitalizations(id).ToList()
-            }) ;
+                section1 = s.Section1.Select(h => h.DetailInArabic).ToList(),
+                section2 = s.Section2.Select(h => h.DetailInArabic).ToList(),
+                section3 = s.Section3.Select(h => h.DetailInArabic).ToList(),
+                section4 = s.Section4.Select(h => h.DetailInArabic).ToList(),
+                section5 = uintOfWork.Digitalization.GetDetails(id).ToList()
+            });
 
         }
         public IEnumerable<BenefitsOfCartViewModel> Benefits_Ar(int id)

@@ -27,12 +27,12 @@ namespace Unit.Logic
         public CartRepository Cart => cart ?? (cart = new CartRepository(dbcontext));
         #endregion
         #region DigitalizationDetailsReposatory
-        DigitalizationDetailsReposatory digitalization;
-        public DigitalizationDetailsReposatory Digitalization => digitalization ?? (digitalization = new DigitalizationDetailsReposatory(dbcontext));
+        Section5_DetailsReposatory digitalization;
+        public Section5_DetailsReposatory Digitalization => digitalization ?? (digitalization = new Section5_DetailsReposatory(dbcontext));
         #endregion
         #region DigitalizationReposatory
-        DigitalizationReposatory digitalizations;
-        public DigitalizationReposatory Digitalizations => digitalizations ?? (digitalizations = new DigitalizationReposatory(dbcontext));
+        Section5_Reposatory digitalizations;
+        public Section5_Reposatory Digitalizations => digitalizations ?? (digitalizations = new Section5_Reposatory(dbcontext));
         #endregion
         #region RequestReposatoriy
         RequestReposatoriy request;

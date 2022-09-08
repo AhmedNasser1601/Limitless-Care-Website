@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Limitless_Care_Website.Data
 {
-    public class DigitalizationDetails
+    public class Section5Details
     {
         [Key]
         public int Id { get; set; }
@@ -17,7 +17,7 @@ namespace Limitless_Care_Website.Data
         public int Digitalization_ID { get; set; }
         [ForeignKey("Digitalization_ID")]
         [Required]
-        public Digitalization Digitalization { get; set; }
+        public Section5 Digitalization { get; set; }
 
     }
 }

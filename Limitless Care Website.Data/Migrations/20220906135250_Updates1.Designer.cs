@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unit.Data;
 
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220906135250_Updates1")]
+    partial class Updates1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,7 +250,7 @@ namespace Limitless_Care_Website.Data.Migrations
 
                     b.HasIndex("Cart_id");
 
-                    b.ToTable("Section2");
+                    b.ToTable("flexibility");
                 });
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Section3", b =>
@@ -271,7 +273,7 @@ namespace Limitless_Care_Website.Data.Migrations
 
                     b.HasIndex("Cart_id");
 
-                    b.ToTable("Section3");
+                    b.ToTable("Providers");
                 });
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Section4", b =>
@@ -317,7 +319,7 @@ namespace Limitless_Care_Website.Data.Migrations
 
                     b.HasIndex("Cart_id");
 
-                    b.ToTable("Section5");
+                    b.ToTable("digitalizations");
                 });
 
             modelBuilder.Entity("Limitless_Care_Website.Data.Section5Details", b =>
@@ -340,7 +342,7 @@ namespace Limitless_Care_Website.Data.Migrations
 
                     b.HasIndex("Digitalization_ID");
 
-                    b.ToTable("Section5Details");
+                    b.ToTable("DigitalizationDetails");
                 });
 
             modelBuilder.Entity("Limitless_Care_Website.Data.SpecialBenefits", b =>

@@ -10,8 +10,8 @@ namespace Limitless_Care_Website.Logic
     {
         public void Commit();
         public CartRepository Cart { get; }
-        public DigitalizationDetailsReposatory Digitalization { get; }
-        public DigitalizationReposatory Digitalizations { get; }
+        public Section5_DetailsReposatory Digitalization { get; }
+        public Section5_Reposatory Digitalizations { get; }
         public RequestReposatoriy requests { get; }
         public UpdateRepository updatess { get; }
         public PeopleRepository peoples { get; }

@@ -10,18 +10,18 @@ using Unit.Logic;
 
 namespace Limitless_Care_Website.Logic.DataAcess
 {
-    public class DigitalizationDetailsReposatory : Repository<DigitalizationDetails>
+    public class Section5_DetailsReposatory : Repository<Section5Details>
     {
         private readonly UintOfWork uintOfWork;
 
-        public DigitalizationDetailsReposatory(ApplicationContext context) : base(context)
+        public Section5_DetailsReposatory(ApplicationContext context) : base(context)
         {
             this.uintOfWork = new UintOfWork(context);
         }
-        public IEnumerable<Digitalization> GetDigitalizations(int CartId)
+        public IEnumerable<Section5> GetDetails(int CartId)
         {
             var Data = uintOfWork.Digitalizations.GetDetails(CartId).FirstOrDefault();
-            Data.DigitalizationDetails = AsQueryable().Where(s => s.Digitalization_ID == Data.Id) .ToList();
+            Data.section5Details = AsQueryable().Where(s => s.Digitalization_ID == Data.Id) .ToList();
             yield return Data;
         }
     }

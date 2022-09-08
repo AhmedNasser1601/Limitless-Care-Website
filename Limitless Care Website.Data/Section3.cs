@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Limitless_Care_Website.Data
 {
-    public class Providers
+    public class Section3
     {
         [Key]
         public int Id { get; set; }

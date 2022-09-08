@@ -50,7 +50,17 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id " + CartId };
             }
         }
-
+        public ResultViewModel GetSectionsName(int CartId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.SectionsName(CartId) };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting Sections Name for Cart Of Id " + CartId };
+            }
+        }
         public ResultViewModel GetBenefitsOfCart(int CartId)
         {
             try
@@ -79,6 +89,7 @@ namespace Limitless.Services.Services.CartServices
 
             }
         }
+
         #region Arabic
         public ResultViewModel GetMainCart_Ar()
         {
@@ -91,7 +102,6 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting All Carts" };
             }
         }
-
         public ResultViewModel GetDetailsOfCartSec1_Ar(int CartId)
         {
             try
@@ -114,7 +124,6 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting  Cart Of Id " + CartId };
             }
         }
-
         public ResultViewModel GetBenefitsOfCart_Ar(int CartId)
         {
             try
@@ -126,9 +135,17 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting Ar Beneifts" };
             }
         }
-
-      
-
+        public ResultViewModel GetSectionsName_Ar(int CartId)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.Cart.SectionsName_Ar(CartId) };
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Error In geting Sections Name for Cart Of Id " + CartId };
+            }
+        }
         #endregion
     }
 }

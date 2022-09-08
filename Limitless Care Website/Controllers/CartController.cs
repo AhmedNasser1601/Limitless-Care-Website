@@ -44,6 +44,11 @@ namespace Limitless_Care_Website.Controllers
 
         }
         [HttpGet]
+        public ResultViewModel GetSectionsName(int Id)
+        {
+            return CartServices.GetSectionsName(Id);
+        }
+        [HttpGet]
         public ResultViewModel GetCartBenefits(int Id)
         {
             return CartServices.GetBenefitsOfCart(Id);
@@ -72,6 +77,11 @@ namespace Limitless_Care_Website.Controllers
         {
             return CartServices.GetBenefitsOfCart_Ar(Id);
 
+        }
+        [HttpGet]
+        public ResultViewModel GetSectionsName_Ar(int Id)
+        {
+            return CartServices.GetSectionsName_Ar(Id);
         }
 
         //Request 
