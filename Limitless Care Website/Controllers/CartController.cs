@@ -10,8 +10,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Unit.Data;
 using Unit.Logic;
-using Unit.Logic.Models;
-
 namespace Limitless_Care_Website.Controllers
 {
     [Route("api/[controller]/[action]")]

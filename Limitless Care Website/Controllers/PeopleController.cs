@@ -1,11 +1,12 @@
 ﻿using Limitless.Services.Services.PeopleServices;
+using Limitless_Care_Website.Logic.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Unit.Logic.Models;
 
 namespace Limitless_Care_Website.Controllers
 {
@@ -26,11 +27,36 @@ namespace Limitless_Care_Website.Controllers
         {
             return PeopleServices.GetPeoples();
         }
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ResultViewModel GetPerson(int id)
+        {
+            return PeopleServices.GetPerson(id);
+        }
         // Get People In Aeabic
         [HttpGet]
         public ResultViewModel GetPeoples_Ar()
         {
             return PeopleServices.GetPeoples_Ar();
         }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ResultViewModel AddPerson(PeopleViewModel model)
+        {
+            return PeopleServices.AddPerson(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ResultViewModel EditPerson(PeopleViewModel model)
+        {
+            return PeopleServices.EditPerson(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ResultViewModel DeletePerson(int id)
+        {
+            return PeopleServices.DeletePerson(id);
+        }
+
     }
 }

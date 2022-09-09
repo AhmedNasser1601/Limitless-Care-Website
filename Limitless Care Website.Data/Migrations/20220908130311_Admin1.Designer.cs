@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unit.Data;
 
 namespace Limitless_Care_Website.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220908130311_Admin1")]
+    partial class Admin1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -425,8 +427,8 @@ namespace Limitless_Care_Website.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2e14635b-47b6-4194-a2c5-6cc4cac61445",
-                            ConcurrencyStamp = "be929822-989b-4b93-8775-7d7df987b57d",
+                            Id = "abaad671-77a5-477f-8f2d-ad5e58133da3",
+                            ConcurrencyStamp = "901141a8-1ce0-4772-9617-d844949099fb",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

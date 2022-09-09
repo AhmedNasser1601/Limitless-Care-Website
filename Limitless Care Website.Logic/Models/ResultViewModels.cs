@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Unit.Logic.Models
+namespace Limitless_Care_Website.Logic.Models
 {
     public class ResultViewModel
     {

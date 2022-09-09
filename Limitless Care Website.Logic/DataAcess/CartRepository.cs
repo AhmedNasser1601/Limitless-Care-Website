@@ -47,7 +47,6 @@ namespace Limitless_Care_Website.Logic.DataAcess
             return model;
 
         }
-
         public IEnumerable<MainOfCartViewModel> Details1(int id)
         {
 

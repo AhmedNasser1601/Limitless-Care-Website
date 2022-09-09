@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Unit.Data;
-using Unit.Logic.Models;
 
 namespace Limitless_Care_Website.Logic.DataAcess
 {
