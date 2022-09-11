@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Limitless_Care_Website.Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Unit.Data;
 using Unit.Logic;
-using Unit.Logic.Models;
 
 namespace Limitless.Services.Services.UpdatesServices
 {
@@ -29,8 +29,10 @@ namespace Limitless.Services.Services.UpdatesServices
         {
             try
             {
+
                 return new ResultViewModel { IsSuccess = true, Data = uintOfWork.updatess.Details(DetailId) };
             }
+            
             catch
             {
                 return new ResultViewModel { IsSuccess = false, Message = "Error In Geting the Detail Of Id  "+ DetailId };
@@ -58,6 +60,69 @@ namespace Limitless.Services.Services.UpdatesServices
             catch
             {
                 return new ResultViewModel { IsSuccess = false, Message = "Error In Geting the Detail Of Id  " + DetailId };
+            }
+        }
+
+        public ResultViewModel AddUpdate(UpdatesViewModel model)
+        {
+            try
+            {
+                uintOfWork.updatess.Add(model);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Added successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Add New Update " };
+
+            }
+        }
+
+        public ResultViewModel EditUpdate(UpdatesViewModel model)
+        {
+            try
+            {
+                uintOfWork.updatess.Edit(model);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Edited successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Edit an Update " };
+
+            }
+        }
+
+        public ResultViewModel EditView(int id)
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.updatess.EditView(id) };
+            }
+
+            
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr With View the update " };
+
+            }
+        }
+
+        public ResultViewModel DeleteUpdate(int id)
+        {
+            try
+            {
+                uintOfWork.updatess.Remove(id);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Deleted successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Can not find This Id " };
+
             }
         }
     }

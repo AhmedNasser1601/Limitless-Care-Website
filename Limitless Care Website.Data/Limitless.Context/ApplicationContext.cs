@@ -37,18 +37,15 @@ namespace Unit.Data
 
         //Meet People
         public DbSet<Peoples> Peoples { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "Admin",
+                NormalizedName = "ADMIN"
 
-
-
-
-
-
-
-
-
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-
-        //}
+            });
+            base.OnModelCreating(builder);
+        }
     }
 }

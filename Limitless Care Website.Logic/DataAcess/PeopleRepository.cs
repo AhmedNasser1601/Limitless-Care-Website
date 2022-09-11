@@ -21,6 +21,23 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 ImagePath = s.ImagePath,
                 Role = s.Role,
                 Name = s.Name
+      
+                
+            });
+            return model;
+
+        }
+        public IEnumerable<PeopleViewModel> Get(int id)
+        {
+
+            var model = AsQueryable().Where(w=>w.Id==id).Select(s => new PeopleViewModel
+            {
+                Id = s.Id,
+                ImagePath = s.ImagePath,
+                Role = s.Role,
+                Name = s.Name,
+                NameInArabic = s.NameInArabic,
+                RoleInArabic = s.RoleInArabic
             });
             return model;
 
@@ -38,6 +55,36 @@ namespace Limitless_Care_Website.Logic.DataAcess
             return model;
 
         }
-
+        public void Add(PeopleViewModel model)
+        {
+            var data = new Peoples
+            {
+                Id = 0,
+                Name = model.Name,
+                NameInArabic = model.NameInArabic,
+                ImagePath = model.ImagePath,
+                Role = model.Role,
+                RoleInArabic = model.RoleInArabic   
+            };
+            Insert(data);
+        }
+        public void Edit(PeopleViewModel model)
+        {
+            var data = new Peoples
+            {
+                Id = model.Id,
+                Name = model.Name,
+                NameInArabic = model.NameInArabic,
+                ImagePath = model.ImagePath,
+                Role = model.Role,
+                RoleInArabic = model.RoleInArabic
+            };
+            Update(data);
+        }
+        public void Remove(int id)
+        {
+            var data = AsQueryable().Where(w => w.Id == id).FirstOrDefault();
+            Delete(data);
+        }
     }
 }

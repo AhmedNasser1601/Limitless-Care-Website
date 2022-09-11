@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 using Unit.Data;
 using Unit.Logic;
-using Unit.Logic.Models;
 
 namespace Limitless.Services.Services.CartServices
 {

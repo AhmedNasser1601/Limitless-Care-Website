@@ -18,11 +18,11 @@ namespace Limitless_Care_Website.Logic.DataAcess
         {
             this.uintOfWork = new UintOfWork(context);
         }
-        public IEnumerable<Section5> GetDetails(int CartId)
-        {
-            var Data = uintOfWork.Digitalizations.GetDetails(CartId).FirstOrDefault();
-            Data.section5Details = AsQueryable().Where(s => s.Digitalization_ID == Data.Id) .ToList();
-            yield return Data;
-        }
+        //public IEnumerable<Section5> GetDetails(int CartId)
+        //{
+        //    var Data = uintOfWork.Digitalizations.GetDetails(CartId).FirstOrDefault();
+        //    Data.section5Details = AsQueryable().Where(s => s.Digitalization_ID == Data.Id) .ToList();
+        //    yield return Data;
+        //}
     }
 }

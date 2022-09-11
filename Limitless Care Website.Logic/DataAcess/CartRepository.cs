@@ -38,16 +38,18 @@ namespace Limitless_Care_Website.Logic.DataAcess
 
             var model = AsQueryable().Where(w => w.Id == id).Select(s => new SectionsNameViewModel
             {
-              NameofSection1 = s.NameofSection1,
-              NameofSection2 = s.NameofSection2,
-              NameofSection3 = s.NameofSection3,
-              NameofSection4 = s.NameofSection4,
-              NameofSection5 = s.NameofSection5
+                Sections = new List<string> {
+                   s.NameofSection1,
+                    s.NameofSection2,
+                   s.NameofSection3,
+                  s.NameofSection4,
+                   s.NameofSection5
+                   }
+                
             });
             return model;
 
         }
-
         public IEnumerable<MainOfCartViewModel> Details1(int id)
         {
 
@@ -70,7 +72,7 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 section2 = s.Section2.Select(h => h.Detail).ToList(),
                 section3 = s.Section3.Select(h => h.Detail).ToList(),
                 section4 = s.Section4.Select(h => h.Detail).ToList(),
-                section5 = uintOfWork.Digitalization.GetDetails(id).ToList()
+                section5 = uintOfWork.Digitalizations.GetDetails(id).ToList()
             }); 
         }
         public IEnumerable<BenefitsOfCartViewModel> Benefits(int id)
@@ -107,12 +109,14 @@ namespace Limitless_Care_Website.Logic.DataAcess
 
             var model = AsQueryable().Where(w => w.Id == id).Select(s => new SectionsNameViewModel
             {
-                NameofSection1 = s.NameofSection1_Ar,
-                NameofSection2 = s.NameofSection2_Ar,
-                NameofSection3 = s.NameofSection3_Ar,
-                NameofSection4 = s.NameofSection4_Ar,
-                NameofSection5 = s.NameofSection5_Ar
-            });
+                Sections = new List<string> {
+                   s.NameofSection1_Ar,
+                    s.NameofSection2_Ar,
+                   s.NameofSection3_Ar,
+                  s.NameofSection4_Ar,
+                   s.NameofSection5_Ar
+                   }
+            }) ;
             return model;
 
         }
@@ -140,7 +144,7 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 section2 = s.Section2.Select(h => h.DetailInArabic).ToList(),
                 section3 = s.Section3.Select(h => h.DetailInArabic).ToList(),
                 section4 = s.Section4.Select(h => h.DetailInArabic).ToList(),
-                section5 = uintOfWork.Digitalization.GetDetails(id).ToList()
+                section5 = uintOfWork.Digitalizations.GetDetails_Ar(id).ToList()
             });
 
         }
