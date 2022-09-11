@@ -19,7 +19,9 @@ namespace LimitlessCareWebsite.Repository
         protected virtual IQueryable<TEntity> AsQueryable()
         {
             return dbcontext.Set<TEntity>();
+            
         }
+ 
 
         protected virtual void Delete(TEntity entity)
         {

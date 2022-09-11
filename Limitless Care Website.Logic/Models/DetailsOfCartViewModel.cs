@@ -11,7 +11,7 @@ namespace Limitless_Care_Website.Logic.Models
         public List<string> section4 { get; set; } // customer
         public List<string> section3 { get; set; } // pro
         public List<string> section2 { get; set; }//Fle
-        public List<Section5> section5 { get; set; } // digi
+        public List<Section5ViewModel> section5 { get; set; } // digi
 
   
     }
