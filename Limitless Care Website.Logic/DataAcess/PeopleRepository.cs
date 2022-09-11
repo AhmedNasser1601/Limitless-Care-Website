@@ -21,6 +21,8 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 ImagePath = s.ImagePath,
                 Role = s.Role,
                 Name = s.Name
+      
+                
             });
             return model;
 
@@ -33,7 +35,9 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 Id = s.Id,
                 ImagePath = s.ImagePath,
                 Role = s.Role,
-                Name = s.Name
+                Name = s.Name,
+                NameInArabic = s.NameInArabic,
+                RoleInArabic = s.RoleInArabic
             });
             return model;
 

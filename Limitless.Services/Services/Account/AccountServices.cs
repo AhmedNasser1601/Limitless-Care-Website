@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,23 +14,19 @@ using System.Threading.Tasks;
 namespace Limitless.Services.Services.Account
 {
 
-    public class AccountServices : IAccountServices
+    public class AccountServices :  IAccountServices
     {
-        RoleManager<IdentityRole> UserRole;
         UserManager<IdentityUser> UserManager;
         private readonly IConfigurationSection _JWTSettings;
         SignInManager<IdentityUser> signInManager;
 
-        public AccountServices(UserManager<IdentityUser> UserManager, RoleManager<IdentityRole> UserRole, SignInManager<IdentityUser> signInManager, IConfiguration configuration)
+        public AccountServices(UserManager<IdentityUser> UserManager,  SignInManager<IdentityUser> signInManager, IConfiguration configuration)
         {
             this.UserManager = UserManager;
-            this.UserRole = UserRole;
+        
             _JWTSettings = configuration.GetSection("JWTSettings");
             this.signInManager = signInManager;
         }
-
-
-
         public ResultViewModel Register(RegisterViewModel Model)
         {
             var Data = new Admin
@@ -106,6 +103,32 @@ namespace Limitless.Services.Services.Account
         public void SignOut()
         {
             signInManager.SignOutAsync();
+        }
+        public bool ValidateJwtToken(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("CodeMazeSecretKey");
+            try
+            {
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
+                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+                var jwtToken = (JwtSecurityToken)validatedToken;
+                return true;
+            }
+            catch
+            {
+                
+                return false;
+            }
         }
     }
 }

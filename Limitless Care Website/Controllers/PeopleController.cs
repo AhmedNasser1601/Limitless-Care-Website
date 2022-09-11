@@ -46,13 +46,13 @@ namespace Limitless_Care_Website.Controllers
             return PeopleServices.AddPerson(model);
         }
         [Authorize(Roles = "Admin")]
-        [HttpPost]
+        [HttpPut]
         public ResultViewModel EditPerson(PeopleViewModel model)
         {
             return PeopleServices.EditPerson(model);
         }
         [Authorize(Roles = "Admin")]
-        [HttpPost]
+        [HttpDelete]
         public ResultViewModel DeletePerson(int id)
         {
             return PeopleServices.DeletePerson(id);

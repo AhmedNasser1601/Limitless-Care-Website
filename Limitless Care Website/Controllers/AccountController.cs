@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Limitless_Care_Website.Controllers
@@ -35,6 +36,18 @@ namespace Limitless_Care_Website.Controllers
         public void Signout()
         {
            accountServices.SignOut();
+        }
+        [HttpGet]
+        [Authorize]
+        public string GetRole()
+        {
+            string Role = User.FindFirstValue(ClaimTypes.Role);
+            return Role;
+        }
+        [HttpPost]
+        public bool Validate(string token)
+        {
+            return accountServices.ValidateJwtToken(token);
         }
     }
 }

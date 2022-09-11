@@ -11,5 +11,8 @@ namespace Limitless.Services.Services.Account
         public ResultViewModel Register(RegisterViewModel model);
         public ResultViewModel Login(LoginViewModel model);
         public void SignOut();
+        public bool ValidateJwtToken(string token);
+
+
     }
 }
