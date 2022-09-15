@@ -3,6 +3,7 @@ using Limitless_Care_Website.Logic.Models;
 using LimitlessCareWebsite.Repository;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Unit.Data;
@@ -25,7 +26,7 @@ namespace Limitless_Care_Website.Logic.DataAcess
             });
             return model;
 
-        }
+        } 
         public IEnumerable<UpdatesViewModel> Details(int id)
         {
         
@@ -61,15 +62,19 @@ namespace Limitless_Care_Website.Logic.DataAcess
             });
 
         }
-
+        //Admin Tool
         public void Add(UpdatesViewModel model)
         {
+
+            DateTime time;
+
+           time = Convert.ToDateTime(model.DateTime);
             var data = new Updates
             {
                 Id = 0,
                 Brief = model.Brief,
                 BriefInArabic =model.BriefInArabic,
-                DateTime =model.DateTime,
+                DateTime = time,
                 Doumention=model.Doumention,
                 DoumentionInArabic = model.DoumentionInArabic,
                 ImagePath = model.ImagePath
@@ -79,12 +84,15 @@ namespace Limitless_Care_Website.Logic.DataAcess
         }
         public void Edit(UpdatesViewModel model)
         {
+            DateTime time;
+
+            time = Convert.ToDateTime(model.DateTime);
             var data = new Updates
             {
                 Id = model.Id,
                 Brief = model.Brief,
                 BriefInArabic = model.BriefInArabic,
-                DateTime = model.DateTime,
+                DateTime = time,
                 Doumention = model.Doumention,
                 DoumentionInArabic = model.DoumentionInArabic,
                 ImagePath = model.ImagePath
@@ -98,7 +106,7 @@ namespace Limitless_Care_Website.Logic.DataAcess
                 Id = s.Id,
                 Brief = s.Brief,
                 BriefInArabic = s.BriefInArabic,
-                DateTime = s.DateTime,
+                DateTime = Convert.ToString(s.DateTime),
                 Doumention = s.Doumention,
                 DoumentionInArabic = s.DoumentionInArabic,
                 ImagePath = s.ImagePath

@@ -19,8 +19,15 @@ namespace Limitless.Services.Services.CartServices
         public ResultViewModel GetDetailsOfCartSec2_Ar(int CartId);
         public ResultViewModel GetBenefitsOfCart_Ar(int CartId);
         public ResultViewModel GetSectionsName_Ar(int CartId);
-
+        // Requeest
         public ResultViewModel AddRequest(RequestViewModel model); // Add A request 
+        public ResultViewModel GetRequests(); // get All Requests 
+
+        // Addmin Tool 
+        public ResultViewModel AddCart(CartViewModel model); // Add Anew Card
+        public ResultViewModel EditMain(CartViewModel model);
+        //public ResultViewModel EditSections(CartViewModel model,int id);
+        public ResultViewModel DeleteCart(int id);
 
     }
 }
