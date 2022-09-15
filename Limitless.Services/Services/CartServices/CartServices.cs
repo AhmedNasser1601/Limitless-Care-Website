@@ -15,7 +15,7 @@ namespace Limitless.Services.Services.CartServices
         {
             this.uintOfWork = new UintOfWork(context);
         }
-        #region English
+       //Get Data In English
         public ResultViewModel GetMainCart()
         {
             try
@@ -71,25 +71,8 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting Beneifts" };
             }
         }
-        #endregion
-
-        public ResultViewModel AddRequest(RequestViewModel model)
-        {
-            try
-            {
-                uintOfWork.requests.Add(model);
-                uintOfWork.Commit();
-                return new ResultViewModel { IsSuccess = true, Message = "Added successfully " };
-
-            }
-            catch
-            {
-                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Add New Request " };
-
-            }
-        }
-
-        #region Arabic
+     
+        //Get Data In Arabic
         public ResultViewModel GetMainCart_Ar()
         {
             try
@@ -145,6 +128,100 @@ namespace Limitless.Services.Services.CartServices
                 return new ResultViewModel { IsSuccess = false, Message = "Error In geting Sections Name for Cart Of Id " + CartId };
             }
         }
-        #endregion
+
+        //Add New Request
+        public ResultViewModel AddRequest(RequestViewModel model)
+        {
+            try
+            {
+                uintOfWork.requests.Add(model);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Added successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Add New Request " };
+
+            }
+        }
+
+        //Admin Tool
+        public ResultViewModel AddCart(CartViewModel model)
+        {
+            try
+            {
+                uintOfWork.Cart.Add(model);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Added successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Add New Cart " };
+
+            }
+        }
+        public ResultViewModel EditMain(CartViewModel model)
+        {
+            try
+            {
+                uintOfWork.Cart.EditMain(model);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Edited successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Edit Main Cart " };
+
+            }
+        }
+        public ResultViewModel DeleteCart(int id)
+        {
+            try
+            {
+                uintOfWork.Cart.Remove(id);
+                uintOfWork.Commit();
+                return new ResultViewModel { IsSuccess = true, Message = "Deleted successfully " };
+
+            }
+            catch
+            {
+                return new ResultViewModel { IsSuccess = false, Message = "Erorr When Delete This Cart With id "+id };
+
+            }
+        }
+
+        public ResultViewModel GetRequests()
+        {
+            try
+            {
+                return new ResultViewModel { IsSuccess = true, Data = uintOfWork.requests.Get() };
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+        //public ResultViewModel EditSections(CartViewModel model,int id)
+        //{
+        //    try
+        //    {
+        //        //uintOfWork.Cart.EditSections(model,id);
+        //        //uintOfWork.Commit();
+        //        var data = uintOfWork.Cart.GetIds(id);
+        //        uintOfWork.Cart.EditSections(model,data);
+        //        return new ResultViewModel { IsSuccess = true, Message = "Edited successfully " };
+
+        //    }
+        //    catch
+        //    {
+        //        return new ResultViewModel { IsSuccess = false, Message = "Erorr When Edit Main Cart " };
+
+        //    }
+        //}
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Limitless.Services.Services.CartServices;
 using Limitless_Care_Website.Data;
 using Limitless_Care_Website.Logic.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -88,6 +89,33 @@ namespace Limitless_Care_Website.Controllers
         {
           return  CartServices.AddRequest(model);
         }
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public ResultViewModel GetRequests()
+        {
+            return CartServices.GetRequests();
+        }
+        //Admin Tool
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ResultViewModel AddCart(CartViewModel model)
+        {
+            return CartServices.AddCart(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPut]
+        public ResultViewModel EditMainCart(CartViewModel model)
+        {
+            return CartServices.EditMain(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+        public ResultViewModel DeleteCart(int id)
+        {
+            return CartServices.DeleteCart(id);
+        }
+
+
 
     }
 }

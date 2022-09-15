@@ -19,7 +19,6 @@ namespace Limitless.Services.Services.Account
         UserManager<IdentityUser> UserManager;
         private readonly IConfigurationSection _JWTSettings;
         SignInManager<IdentityUser> signInManager;
-
         public AccountServices(UserManager<IdentityUser> UserManager,  SignInManager<IdentityUser> signInManager, IConfiguration configuration)
         {
             this.UserManager = UserManager;
@@ -45,11 +44,9 @@ namespace Limitless.Services.Services.Account
                      Result = UserManager.AddPasswordAsync(Data, Model.Password).Result;
                 if (Result.Succeeded)
                     return new ResultViewModel { IsSuccess = true, Message = "Register Success" };
-
             }
             return new ResultViewModel { IsSuccess = false, Message = "Invalid Register",Data = Result };
-        }
-            
+        }    
         public ResultViewModel Login(LoginViewModel model)
         {
             var user = UserManager.FindByEmailAsync(model.Email).Result;
@@ -72,7 +69,6 @@ namespace Limitless.Services.Services.Account
 
             return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
         }
-
         private async Task<List<Claim>> GetClaims(IdentityUser user)
         {
             var claims = new List<Claim>
@@ -89,7 +85,6 @@ namespace Limitless.Services.Services.Account
             }
             return claims;
         }
-
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
         {
             var tokenOptions = new JwtSecurityToken(
@@ -125,8 +120,7 @@ namespace Limitless.Services.Services.Account
                 return true;
             }
             catch
-            {
-                
+            {    
                 return false;
             }
         }

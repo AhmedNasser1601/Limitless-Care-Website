@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Limitless_Care_Website.Data;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Limitless_Care_Website.Data
+namespace Limitless_Care_Website.Logic.Models
 {
-    public class Carts
+    public class CartViewModel
     {
-        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public string ImagePath { get; set; }
@@ -29,22 +27,15 @@ namespace Limitless_Care_Website.Data
         public string NameofSection4_Ar { get; set; }
         public string NameofSection5_Ar { get; set; }
 
-        public virtual ICollection<Section1> Section1 { get; set; }
-        public ICollection <Section2> Section2 { get; set; }
+        public ICollection<Section1> Section1 { get; set; }
+        public ICollection<Section2> Section2 { get; set; }
         public ICollection<Section3> Section3 { get; set; }
         public ICollection<Section4> Section4 { get; set; }
         public ICollection<Section5> Section5 { get; set; }
-        
+
         public ICollection<InPatient> InPatients { get; set; }
         public ICollection<OutPatient> OutPatients { get; set; }
         public ICollection<Others> Others { get; set; }
         public ICollection<SpecialBenefits> SpecialBenefits { get; set; }
-
-
-
-
-
-
-
     }
 }

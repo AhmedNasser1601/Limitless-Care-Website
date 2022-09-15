@@ -9,6 +9,7 @@ namespace Limitless_Care_Website.Logic.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string IconPath { get; set; }
         public string ImagePath { get; set; }
         public string Brief { get; set; }
         public string Doumention { get; set; }

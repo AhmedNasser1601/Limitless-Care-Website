@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Limitless_Care_Website.Logic.Models
@@ -12,6 +13,8 @@ namespace Limitless_Care_Website.Logic.Models
         public string BriefInArabic { get; set; }
         public string DoumentionInArabic { get; set; }
         public string Doumention { get; set; }
-        public DateTime DateTime { get; set; }
-    }
+        public string DateTime { get; set; }
+
+      
+            }
 }
